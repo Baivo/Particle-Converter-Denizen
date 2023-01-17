@@ -10,7 +10,7 @@
     Name="mainWindow"
     Title="{DynamicResource WindowTitle}"
     Width="640"
-    Height="485"
+    Height="409"
     MinWidth="640"
     MinHeight="495"
     AllowsTransparency="True"
@@ -217,28 +217,28 @@
                     Margin="10,5,0,0"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="113*"/>
+                        <ColumnDefinition Width="217*"/>
+                    </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="30" />
-                        <RowDefinition Height="*" />
+                        <RowDefinition Height="13" />
+                        <RowDefinition />
                     </Grid.RowDefinitions>
-                    <TextBlock
-                        Name="OptionsTitle"
+                    <ScrollViewer
+                        x:Name="OptionsView"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Top"
-                        RenderTransformOrigin="0.433,1.096"
-                        Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
-                        Text="{DynamicResource SettingTitle}" Visibility="Hidden" />
-                    <ScrollViewer
-                        Name="OptionsView"
-                        Margin="0,-89,0,0"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Top"
                         HorizontalScrollBarVisibility="Hidden"
-                        VerticalScrollBarVisibility="Auto" Height="344" Grid.RowSpan="2">
+                        VerticalScrollBarVisibility="Auto" Height="289" Grid.RowSpan="2" Width="406" Grid.ColumnSpan="2" Margin="0,-106,0,0">
                         <Grid Margin="0,0,0,0">
-                            <StackPanel Margin="0,25,0,-42">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="32*"/>
+                                <ColumnDefinition Width="35*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Margin="0,69,0,-40" Grid.ColumnSpan="2">
                                 <ComboBox
-                                    Name="CoordinateModeBox"
+                                    x:Name="CoordinateModeBox"
                                     Margin="10,10,128,0"
                                     VerticalAlignment="Top"
                                     materialDesign:ComboBoxAssist.ShowSelectedItem="True"
@@ -253,7 +253,7 @@
                                 </ComboBox>
                                 <StackPanel Margin="10,10,0,0" Orientation="Horizontal">
                                     <ComboBox
-                                        Name="CoordinateAxis"
+                                        x:Name="CoordinateAxis"
                                         Width="110"
                                         Margin="0,0"
                                         HorizontalAlignment="Left"
@@ -271,7 +271,7 @@
                                         <ComboBoxItem Content="{DynamicResource Z-X}" Tag="2" />
                                     </ComboBox>
                                     <ComboBox
-                                        Name="ImageRotationBox"
+                                        x:Name="ImageRotationBox"
                                         Width="80"
                                         Margin="30,0,0,0"
                                         HorizontalAlignment="Left"
@@ -291,7 +291,7 @@
                                         <ComboBoxItem Content="270˚" Tag="270" />
                                     </ComboBox>
                                     <CheckBox
-                                        Name="ImageFlipBox"
+                                        x:Name="ImageFlipBox"
                                         Margin="20,0"
                                         VerticalAlignment="Bottom"
                                         Checked="ImageFlipBox_Checked"
@@ -301,7 +301,7 @@
                                 </StackPanel>
                                 <StackPanel Margin="10,10,0,0" Orientation="Horizontal">
                                     <ComboBox
-                                        Name="HorizontalAlignmentBox"
+                                        x:Name="HorizontalAlignmentBox"
                                         MinWidth="80"
                                         Margin="0,0,0,0"
                                         VerticalAlignment="Top"
@@ -318,7 +318,7 @@
                                         <ComboBoxItem Content="{DynamicResource Right}" Tag="2" />
                                     </ComboBox>
                                     <ComboBox
-                                        Name="VerticalAlignmentBox"
+                                        x:Name="VerticalAlignmentBox"
                                         MinWidth="100"
                                         Margin="30,0,0,0"
                                         VerticalAlignment="Top"
@@ -338,7 +338,7 @@
 
                                 <StackPanel Margin="10,10,0,0" Orientation="Horizontal">
                                     <TextBox
-                                        Name="ParticleSizeBox"
+                                        x:Name="ParticleSizeBox"
                                         
                                         Width="0"
                                         Margin="0,0,0,0"
@@ -363,7 +363,7 @@
                                 </StackPanel>
 
                                 <CheckBox
-                                    Name="AutoSizeBox"
+                                    x:Name="AutoSizeBox"
                                     Margin="10,10,0,0"
                                     HorizontalAlignment="Left"
                                     VerticalAlignment="Center"
@@ -376,15 +376,15 @@
                                 <!--  サイズ（ブロック）  -->
                                 <TextBlock
                                     Margin="10,10,0,0"
-                                    IsEnabled="{Binding ElementName=AutoSizeBox, Path=IsChecked, Converter={StaticResource BoolNeg}}"
+                                    IsEnabled="{Binding IsChecked, Converter={StaticResource BoolNeg}, ElementName=AutoSizeBox}"
                                     Style="{StaticResource MaterialDesignCaptionTextBlock}"
                                     Text="{DynamicResource Size}" />
                                 <StackPanel
                                     Margin="10,0,0,0"
-                                    IsEnabled="{Binding ElementName=AutoSizeBox, Path=IsChecked, Converter={StaticResource BoolNeg}}"
+                                    IsEnabled="{Binding IsChecked, Converter={StaticResource BoolNeg}, ElementName=AutoSizeBox}"
                                     Orientation="Horizontal">
                                     <TextBox
-                                        Name="SizeWBox"
+                                        x:Name="SizeWBox"
                                         Width="80"
                                         Margin="0,0,0,0"
                                         HorizontalAlignment="Left"
@@ -401,16 +401,16 @@
                                         Margin="10,0,0,0"
                                         HorizontalAlignment="Left"
                                         VerticalAlignment="Bottom"
-                                        Foreground="DarkGray">
-                                        <materialDesign:PackIcon
-                                            Width="21"
-                                            Height="21"
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Bottom"
-                                            Kind="Close" />
-                                    </TextBlock>
+                                        Foreground="DarkGray"><InlineUIContainer>
+                                            <materialDesign:PackIcon
+                                                Width="21"
+                                                Height="21"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Bottom"
+                                                Kind="Close" />
+                                        </InlineUIContainer></TextBlock>
                                     <TextBox
-                                        Name="SizeHBox"
+                                        x:Name="SizeHBox"
                                         Width="80"
                                         Margin="10,0,0,0"
                                         HorizontalAlignment="Left"
@@ -426,7 +426,7 @@
                                 <!--  詳細設定  -->
 
                                 <Expander
-                                    Width="{Binding ElementName=Options, Path=Width}"
+                                    Width="{Binding Width, ElementName=Options}"
                                     Margin="0,5,5,0"
                                     HorizontalAlignment="Left"
                                     Expanded="Expander_Expanded" Visibility="Hidden">
@@ -450,10 +450,10 @@
                                         <StackPanel Margin="0,0,0,0" Orientation="Horizontal">
                                             <StackPanel
                                                 Margin="5,0"
-                                                IsEnabled="{Binding ElementName=AutoResolutionBox, Path=IsChecked, Converter={StaticResource BoolNeg}}"
+                                                IsEnabled="{Binding IsChecked, Converter={StaticResource BoolNeg}, ElementName=AutoResolutionBox}"
                                                 Orientation="Horizontal">
                                                 <TextBox
-                                                    Name="ResolutionWidthBox"
+                                                    x:Name="ResolutionWidthBox"
                                                     Width="53"
                                                     Margin="0,0,0,0"
                                                     HorizontalAlignment="Left"
@@ -470,15 +470,15 @@
                                                     Margin="10,0,0,0"
                                                     HorizontalAlignment="Left"
                                                     VerticalAlignment="Bottom"
-                                                    Foreground="DarkGray">
-                                                    <materialDesign:PackIcon
-                                                        Width="21"
-                                                        Height="21"
-                                                        HorizontalAlignment="Center"
-                                                        Kind="Close" />
-                                                </TextBlock>
+                                                    Foreground="DarkGray"><InlineUIContainer>
+                                                        <materialDesign:PackIcon
+                                                            Width="21"
+                                                            Height="21"
+                                                            HorizontalAlignment="Center"
+                                                            Kind="Close" />
+                                                    </InlineUIContainer></TextBlock>
                                                 <TextBox
-                                                    Name="ResolutionHeightBox"
+                                                    x:Name="ResolutionHeightBox"
                                                     Width="53"
                                                     Margin="10,0,0,0"
                                                     HorizontalAlignment="Left"
@@ -491,7 +491,7 @@
                                                     Text="64" />
                                             </StackPanel>
                                             <CheckBox
-                                                Name="AutoResolutionBox"
+                                                x:Name="AutoResolutionBox"
                                                 Margin="10,0,0,5"
                                                 HorizontalAlignment="Left"
                                                 VerticalAlignment="Bottom"
@@ -507,7 +507,7 @@
                                             Style="{StaticResource MaterialDesignBody2TextBlock}"
                                             Text="{DynamicResource Particle}" />
                                         <ComboBox
-                                            Name="ParticleTypeBox"
+                                            x:Name="ParticleTypeBox"
                                             Width="180"
                                             Margin="5,10"
                                             HorizontalAlignment="Left"
@@ -522,7 +522,7 @@
                                             SelectedValue="dust" />
                                         <StackPanel Margin="5,0" Orientation="Horizontal">
                                             <ComboBox
-                                                Name="DisplayModeBox"
+                                                x:Name="DisplayModeBox"
                                                 MinWidth="80"
                                                 Margin="0,0"
                                                 VerticalAlignment="Bottom"
@@ -537,55 +537,58 @@
                                                     Tag="force" />
                                             </ComboBox>
                                             <TextBox
-                                                Name="ParticleViewerBox"
+                                                x:Name="ParticleViewerBox"
                                                 Width="140"
                                                 Margin="30,0"
                                                 VerticalAlignment="Bottom"
                                                 materialDesign:HintAssist.FloatingScale="0.90"
                                                 materialDesign:HintAssist.Hint="{DynamicResource ParticleViewer}"
                                                 materialDesign:HintAssist.IsFloating="True"
-                                                Style="{StaticResource MaterialDesignFloatingHintTextBox}">
-                                                @a
-                                            </TextBox>
+                                                Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="@a"/>
                                         </StackPanel>
                                         <!--  カラーコード  -->
                                         <StackPanel
                                             Margin="5,5"
-                                            IsEnabled="{Binding ElementName=ParticleTypeBox, Path=Text, Converter={StaticResource IsDust}}"
+                                            IsEnabled="{Binding Text, Converter={StaticResource IsDust}, ElementName=ParticleTypeBox}"
                                             Orientation="Horizontal">
                                             <CheckBox
-                                                Name="UseStaticDustColor"
+                                                x:Name="UseStaticDustColor"
                                                 Margin="0,0,0,5"
                                                 VerticalAlignment="Bottom"
                                                 Checked="CheckBox_Check_Changed"
                                                 Content="{DynamicResource DustColorStatic}"
                                                 Loaded="CheckBox_Loaded" />
                                             <TextBox
-                                                Name="ColorCodeBox"
+                                                x:Name="ColorCodeBox"
                                                 Width="80"
                                                 Margin="10,0"
                                                 VerticalAlignment="Bottom"
                                                 materialDesign:HintAssist.Hint="{DynamicResource ColorCode}"
                                                 materialDesign:HintAssist.IsFloating="True"
-                                                IsEnabled="{Binding ElementName=UseStaticDustColor, Path=IsChecked}"
+                                                IsEnabled="{Binding IsChecked, ElementName=UseStaticDustColor}"
                                                 Loaded="FilterTextBox_Loaded"
                                                 LostFocus="ColorCodeBox_LostFocus"
-                                                TextChanged="ColorCodeBox_TextChanged">
-                                                red
-                                            </TextBox>
+                                                TextChanged="ColorCodeBox_TextChanged" Text="red"/>
                                             <Canvas
-                                                Name="ColorCanvas"
+                                                x:Name="ColorCanvas"
                                                 Width="25"
                                                 Height="25"
                                                 Margin="5,0"
                                                 VerticalAlignment="Bottom"
-                                                IsEnabled="{Binding ElementName=UseStaticDustColor, Path=IsChecked}" />
+                                                IsEnabled="{Binding IsChecked, ElementName=UseStaticDustColor}" />
                                         </StackPanel>
                                     </StackPanel>
                                 </Expander>
                             </StackPanel>
                         </Grid>
                     </ScrollViewer>
+                    <TextBlock
+                        x:Name="OptionsTitle"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        RenderTransformOrigin="0.433,1.096"
+                        Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
+                        Text="{DynamicResource SettingTitle}" Visibility="Hidden" Height="19" Grid.RowSpan="2" Width="140" Grid.ColumnSpan="2" />
                 </Grid>
                 <!--  プレビュー  -->
                 <CheckBox
@@ -685,9 +688,9 @@
                         VerticalAlignment="Top"
                         Style="{StaticResource HorizontalGridSplitter}" />
                     <StackPanel
-                        Margin="-341,2,0,0"
+                        Margin="-344,177,0,0"
                         HorizontalAlignment="Left"
-                        VerticalAlignment="Top" Height="190" Width="623" Grid.Row="1">
+                        VerticalAlignment="Top" Height="110" Width="283" RenderTransformOrigin="0.515,0.193" Grid.RowSpan="2">
 
                         <TextBlock Style="{StaticResource MaterialDesignSubtitle1TextBlock}" Text="{DynamicResource ExportSettings}" Visibility="Hidden" />
                         <!--  ファイルパス  -->
