@@ -1,5 +1,5 @@
 # Denizen specific info
-For now, it outputs the particle export as a ListTag of relative vectors from 0,0,0. Use it in something like this:
+For now, it outputs the particle export as a ListTag of relative vectors, plug in your own starting location. Use it in something like this:
 ```
 - define location <player.location>
 - define list <paste the exported ListTag here>
