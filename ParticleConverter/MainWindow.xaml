@@ -161,19 +161,19 @@
                     Margin="5,5,5,0"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center"
-                    Orientation="Horizontal">
+                    Orientation="Horizontal" Visibility="Hidden">
                     <materialDesign:PackIcon
                         Width="21"
                         Height="21"
                         VerticalAlignment="Center"
                         Foreground="White"
-                        Kind="Earth" />
+                        Kind="Earth" Visibility="Hidden" />
                     <ComboBox
                         Name="LanguageBox"
                         Height="30"
                         MinWidth="60"
                         Margin="5,0,0,0"
-                        SelectionChanged="LanguageBox_SelectionChanged" />
+                        SelectionChanged="LanguageBox_SelectionChanged" Visibility="Hidden" />
                 </StackPanel>
 
                 <!--  ファイルパス  -->
@@ -227,17 +227,16 @@
                         VerticalAlignment="Top"
                         RenderTransformOrigin="0.433,1.096"
                         Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
-                        Text="{DynamicResource SettingTitle}" />
+                        Text="{DynamicResource SettingTitle}" Visibility="Hidden" />
                     <ScrollViewer
                         Name="OptionsView"
-                        Grid.Row="1"
-                        Margin="0,5"
-                        HorizontalAlignment="Left"
+                        Margin="0,-89,0,0"
+                        HorizontalAlignment="Center"
                         VerticalAlignment="Top"
                         HorizontalScrollBarVisibility="Hidden"
-                        VerticalScrollBarVisibility="Auto">
+                        VerticalScrollBarVisibility="Auto" Height="344" Grid.RowSpan="2">
                         <Grid Margin="0,0,0,0">
-                            <StackPanel>
+                            <StackPanel Margin="0,25,0,-42">
                                 <ComboBox
                                     Name="CoordinateModeBox"
                                     Margin="10,10,128,0"
@@ -245,7 +244,7 @@
                                     materialDesign:ComboBoxAssist.ShowSelectedItem="True"
                                     materialDesign:HintAssist.FloatingScale="0.90"
                                     materialDesign:HintAssist.Hint="{DynamicResource CoordinateMode}"
-                                    materialDesign:HintAssist.IsFloating="True">
+                                    materialDesign:HintAssist.IsFloating="True" Visibility="Hidden">
                                     <ComboBoxItem
                                         Content="{DynamicResource RelativeCoordinate}"
                                         IsSelected="True"
@@ -340,7 +339,8 @@
                                 <StackPanel Margin="10,10,0,0" Orientation="Horizontal">
                                     <TextBox
                                         Name="ParticleSizeBox"
-                                        Width="100"
+                                        
+                                        Width="0"
                                         Margin="0,0,0,0"
                                         HorizontalAlignment="Left"
                                         materialDesign:HintAssist.FloatingScale="0.90"
@@ -348,15 +348,13 @@
                                         Loaded="FilterTextBox_Loaded"
                                         LostFocus="ParticleSizeBox_LostFocus"
                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                        Text="1.00" />
+                                        Text="1.00" IsEnabled="False" />
                                     <TextBox
-                                        Name="ParticleDensityBox"
+                                        x:Name="ParticleDensityBox"
                                         Width="70"
-                                        Margin="30,0,0,0"
-                                        HorizontalAlignment="Left"
                                         materialDesign:HintAssist.FloatingScale="0.90"
                                         materialDesign:HintAssist.Hint="{DynamicResource ParticleDensity}"
-                                        IsEnabled="{Binding ElementName=AutoSizeBox, Path=IsChecked}"
+                                        IsEnabled="{Binding IsChecked, ElementName=AutoSizeBox}"
                                         Loaded="FilterTextBox_Loaded"
                                         LostFocus="NumlicBox_LostFocus"
                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
@@ -431,13 +429,13 @@
                                     Width="{Binding ElementName=Options, Path=Width}"
                                     Margin="0,5,5,0"
                                     HorizontalAlignment="Left"
-                                    Expanded="Expander_Expanded">
+                                    Expanded="Expander_Expanded" Visibility="Hidden">
                                     <Expander.Header>
                                         <DockPanel>
                                             <TextBlock
                                                 DockPanel.Dock="Right"
                                                 Text="{DynamicResource ExtraOptions}"
-                                                TextAlignment="Right" />
+                                                TextAlignment="Right" IsEnabled="False" Visibility="Hidden" />
                                         </DockPanel>
                                     </Expander.Header>
 
@@ -592,11 +590,9 @@
                 <!--  プレビュー  -->
                 <CheckBox
                     Name="UsePreviewBox"
-                    Grid.Row="1"
-                    Grid.Column="1"
-                    Margin="5,0"
+                    Margin="320,20,40,5"
                     Checked="UsePreviewBox_Checked"
-                    Content="{DynamicResource UsePreview}" />
+                    Content="{DynamicResource UsePreview}" IsChecked="True" Grid.ColumnSpan="2" Grid.RowSpan="2" />
                 <StackPanel
                     Grid.Row="1"
                     Grid.Column="1"
@@ -642,7 +638,7 @@
                             MSAA="Four"
                             SSAOQuality="High"
                             ShowCoordinateSystem="True"
-                            ShowViewCube="False">
+                            ShowViewCube="False" Margin="-39,0,0,-43">
 
                             <ht:Viewport3DX.Camera>
                                 <ht:PerspectiveCamera
@@ -689,12 +685,11 @@
                         VerticalAlignment="Top"
                         Style="{StaticResource HorizontalGridSplitter}" />
                     <StackPanel
-                        Grid.Row="1"
-                        Margin="0,20,0,0"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Bottom">
+                        Margin="-341,2,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top" Height="190" Width="623" Grid.Row="1">
 
-                        <TextBlock Style="{StaticResource MaterialDesignSubtitle1TextBlock}" Text="{DynamicResource ExportSettings}" />
+                        <TextBlock Style="{StaticResource MaterialDesignSubtitle1TextBlock}" Text="{DynamicResource ExportSettings}" Visibility="Hidden" />
                         <!--  ファイルパス  -->
                         <StackPanel
                             Grid.RowSpan="2"
@@ -726,14 +721,12 @@
                                 ToolTip="{DynamicResource Brows}" />
                         </StackPanel>
                         <Button
-                            Name="ExportButton"
-                            Width="230"
-                            Margin="0,20,0,0"
-                            HorizontalAlignment="Center"
+                            x:Name="ExportButton"
+                            Width="127"
                             materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
                             Click="ExportButton_Click"
                             Content="{DynamicResource Export}"
-                            Style="{StaticResource MaterialDesignRaisedButton}" />
+                            Style="{StaticResource MaterialDesignRaisedButton}" HorizontalAlignment="Left" Margin="0,0,0,50" Height="26" />
                     </StackPanel>
                 </Grid>
             </Grid>

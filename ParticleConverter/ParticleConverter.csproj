@@ -5,12 +5,12 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
     <StartupObject>ParticleConverter.App</StartupObject>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>kemo14331.pfx</AssemblyOriginatorKeyFile>
     <DelaySign>false</DelaySign>
     <Copyright>Kemo431</Copyright>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Authors>Kemo431</Authors>
+    <Authors>Kemo431 + Baivo</Authors>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <Deterministic>false</Deterministic>
     <RepositoryUrl>https://github.com/kemo14331/Particle-Converter</RepositoryUrl>
