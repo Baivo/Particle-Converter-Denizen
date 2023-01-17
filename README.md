@@ -1,6 +1,16 @@
+# Denizen specific info
+For now, it outputs the particle export as a ListTag of relative vectors from 0,0,0. Use it in something like this:
+```
+- define location <player.location>
+- define list <paste the exported ListTag here>
+- foreach <[list]> as:particle:
+    - playeffect at:<[location].relative[<[particle]>]> effect:electric_spark count:1
+```
 # Particle Converter 
 ![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/kemo14331/Particle-Converter)  [![GitHub license](https://img.shields.io/github/license/kemo14331/Particle-Converter)](https://github.com/kemo14331/Particle-Converter/blob/main/LICENSE)  
 Particle Converter is an application to convert image files into particle commands.
+
+
 
 ## ScreenShot
  ![screenshot0](https://imgur.com/HvnhBgF.jpg,"screenshot")
