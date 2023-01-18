@@ -654,7 +654,7 @@ namespace ParticleConverter
                         ButtonProgressAssist.SetValue(ExportButton, 20 + 1 + i);
                     }
                     writer.Write("]>\r\n");
-                    writer.Write("    - define delay <element[1].div[<[frequency]>].as[duration].in_ticks>t\r\n    - repeat <[frequency]>:\r\n        - foreach <[shape]> as:loc:\r\n            - playeffect at:<[loc]> effect:<[particle]>");
+                    writer.Write("    - define delay <element[1].div[<[frequency]>].as[duration].in_ticks>t\r\n    - repeat <[frequency]>:\r\n        - foreach <[shape]> as:loc:\r\n            - playeffect at:<[location].relative[<[vec]>]> effect:<[particle]>");
                     
                 }
                 catch (Exception exc)
