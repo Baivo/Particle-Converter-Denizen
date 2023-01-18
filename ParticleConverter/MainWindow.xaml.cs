@@ -626,6 +626,8 @@ namespace ParticleConverter
                     writer.WriteLine($"### Denizen gore by Baivo#1337");
                     writer.WriteLine($"### https://github.com/Baivo/Particle-Converter-Denizen");
                     writer.WriteLine($"");
+                    writer.Write("ps_shape_import:\r\n    type: task\r\n    definitions: location|particle|frequency|rotation\r\n    script:\r\n    - define shape ");
+
                     writer.Write("<list[");
                     for (int i = 0; i < particles.Length; i++)
                     {
@@ -651,7 +653,9 @@ namespace ParticleConverter
                         });
                         ButtonProgressAssist.SetValue(ExportButton, 20 + 1 + i);
                     }
-                    writer.Write("]>");
+                    writer.Write("]>\r\n");
+                    writer.Write("    - define delay <element[1].div[<[frequency]>].as[duration].in_ticks>t\r\n    - repeat <[frequency]>:\r\n        - foreach <[shape]> as:loc:\r\n            - playeffect at:<[loc]> effect:<[particle]>");
+                    
                 }
                 catch (Exception exc)
                 {
