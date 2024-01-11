@@ -32,9 +32,6 @@ Particle Converter is an application to convert image files into particle comman
 
 Translated with www.DeepL.com/Translator (free version)
 
-## Downloads
- [Particle-Converter/Release](https://github.com/kemo14331/Particle-Converter/releases/latest)
- 
 ## Requirement
  
  * .NETCore 3.1
