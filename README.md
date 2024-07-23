@@ -12,7 +12,7 @@ Particle Converter is an application to convert image files into particle comman
 
 
 
-## ScreenShot
+## Screenshots
  ![screenshot0](https://imgur.com/HvnhBgF.jpg,"screenshot")
  <details>
  <summary>and more</summary><div>  
@@ -20,7 +20,7 @@ Particle Converter is an application to convert image files into particle comman
  <img src="https://imgur.com/hdSbSkc.jpg" alt="screenshot2" />
  </div></details>  
 
-## Feature
+## Features
 * Convert the image file (.jpg|.png) into a particle command that can be displayed in Minecraft and output as a mcfunction format
 * Correspond to world relative coordinates(~) and local relative coordinates(^).
 * Real-time preview of parameter changes.
@@ -41,10 +41,7 @@ Translated with www.DeepL.com/Translator (free version)
  * [OpenCVSharp4](https://github.com/shimat/opencvsharp)
  * [HelixToolkit.SharpDX.Core.Wpf](https://github.com/helix-toolkit/helix-toolkit) 
 
-## Author
+## Original Author
 
 * Kemo431  
 * Twitter: [@newkemo431](https://twitter.com/newkemo431)
- 
-## License
-This app is under the [MIT license](https://en.wikipedia.org/wiki/MIT_License).
